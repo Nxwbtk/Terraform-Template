@@ -1,0 +1,50 @@
+region: ap-southeast-7
+
+version: 3.3
+
+# Defines the core accounts that Control Tower will create.
+coreAccounts:
+  - name: Log Archive
+    # IMPORTANT: Replace with a unique email address
+    email: ${logging_email}
+    # This organizational unit is created automatically by Control Tower
+    organizationalUnit: Security
+  - name: Audit
+    # IMPORTANT: Replace with a unique email address
+    email: ${audit_email}
+    # This organizational unit is created automatically by Control Tower
+    organizationalUnit: Security
+
+# List of AWS regions to be governed by Control Tower.
+governedRegions:
+  - ap-southeast-7
+  # Add other regions you want to govern
+
+# Centralized logging configuration
+logging:
+  loggingAccount:
+    name: Log Archive
+  accessLogging:
+    s3:
+      # Enables access logging for the central S3 log bucket
+      enable: true
+  cloudtrail:
+    # Enables CloudTrail logging for all accounts
+    enable: true
+  awsConfig:
+    # Enables AWS Config for all accounts
+    enable: true
+
+# Security roles and access management
+securityRoles:
+  # The role that administrators can assume from the management account
+  # to gain administrative access to member accounts.
+  adminRole:
+    name: AWSControlTowerAdmin
+  # The role for read-only access.
+  readOnlyRole:
+    name: AWSControlTowerReadOnly
+accessManagement:
+  # Enables AWS IAM Identity Center (formerly AWS SSO)
+  awsIAMIdentityCenter:
+    enable: true
