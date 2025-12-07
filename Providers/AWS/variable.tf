@@ -1,4 +1,25 @@
 variable "region" {
+  type = string
+}
+
+variable "profile" {
   type    = string
-  default = "ap-southeast-1"
+  default = null
+}
+
+variable "access_key" {
+  type      = string
+  default   = null
+  sensitive = true
+}
+
+variable "secret_key" {
+  type      = string
+  default   = null
+  sensitive = true
+}
+
+variable "default_tags" {
+  type    = map(string)
+  default = {}
 }
