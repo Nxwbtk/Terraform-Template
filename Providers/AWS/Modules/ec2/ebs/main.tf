@@ -2,7 +2,7 @@ resource "aws_ebs_volume" "this" {
   availability_zone = var.availability_zone
   size              = var.size
   tags              = var.tags
-  type              = var.type
+  type              = var.ebs_volume_type
 }
 
 
