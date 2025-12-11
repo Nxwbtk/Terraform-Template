@@ -7,7 +7,7 @@ variable "subnet_ids" {
   type        = list(string)
   description = "List of Subnet IDs for the EKS Cluster"
 }
-variable "tags" {
+variable "cluster_tags" {
   type        = map(string)
   description = "Tags to apply to the EKS Cluster"
   default     = {}
@@ -42,4 +42,15 @@ variable "update_config" {
     max_unavailable = number
   })
   description = "Update configuration for the EKS Node Group"
+}
+
+variable "node_group_subnet_ids" {
+  type        = list(string)
+  description = "List of Subnet IDs for the EKS Node Group"
+}
+
+variable "node_group_tags" {
+  type        = map(string)
+  description = "Tags to apply to the EKS Node Group"
+  default     = {}
 }

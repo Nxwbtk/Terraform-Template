@@ -14,3 +14,8 @@ variable "tags" {
 variable "subnet_id" {
   type = string
 }
+
+variable "is_public" {
+  description = "Whether to associate a public IP address with the instance."
+  type        = bool
+}
