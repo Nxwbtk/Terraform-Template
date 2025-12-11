@@ -5,7 +5,8 @@ resource "aws_route_table" "main" {
 
 resource "aws_route_table_association" "main" {
   route_table_id = aws_route_table.main.id
-  subnet_id      = var.subnet_id
+  for_each       = var.subnet_id
+  subnet_id      = each.value
 }
 
 resource "aws_route" "main" {

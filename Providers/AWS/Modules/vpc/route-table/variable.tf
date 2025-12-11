@@ -10,7 +10,7 @@ variable "tags" {
 
 variable "subnet_id" {
   description = "The ID of the subnet to associate with the route table."
-  type        = string
+  type        = map(string)
 }
 
 variable "route_type" {
