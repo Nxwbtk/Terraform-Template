@@ -19,3 +19,10 @@ variable "is_public" {
   description = "Whether to associate a public IP address with the instance."
   type        = bool
 }
+
+variable "vpc_security_group_ids" {
+  description = "List of VPC security group IDs to associate with the instance."
+  type        = list(string)
+  default     = []
+
+}
