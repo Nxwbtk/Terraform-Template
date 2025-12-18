@@ -9,12 +9,13 @@ resource "aws_vpc_security_group_ingress_rule" "this" {
     for i, rule in var.ingress_rules : i => rule
   }
 
-  security_group_id = aws_security_group.this.id
-  description       = lookup(each.value, "description", null)
-  from_port         = each.value.from_port
-  to_port           = each.value.to_port
-  ip_protocol       = each.value.protocol
-  cidr_ipv4         = each.value.cidr_blocks[0]
+  security_group_id            = aws_security_group.this.id
+  description                  = lookup(each.value, "description", null)
+  from_port                    = each.value.from_port
+  to_port                      = each.value.to_port
+  ip_protocol                  = each.value.protocol
+  cidr_ipv4                    = lookup(each.value, "cidr_ipv4", null)
+  referenced_security_group_id = lookup(each.value, "referenced_security_group_id", null)
 }
 
 resource "aws_vpc_security_group_egress_rule" "this" {
