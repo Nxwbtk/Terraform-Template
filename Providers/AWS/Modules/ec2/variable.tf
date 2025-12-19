@@ -26,3 +26,9 @@ variable "vpc_security_group_ids" {
   default     = []
 
 }
+
+variable "user_data" {
+  description = "User data script to execute on instance launch."
+  type        = string
+  default     = ""
+}
