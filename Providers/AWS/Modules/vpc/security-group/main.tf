@@ -14,7 +14,7 @@ resource "aws_vpc_security_group_ingress_rule" "this" {
   from_port                    = each.value.from_port
   to_port                      = each.value.to_port
   ip_protocol                  = each.value.protocol
-  cidr_ipv4                    = lookup(each.value, "cidr_ipv4", null)
+  cidr_ipv4                    = each.value.cidr_ipv4
   referenced_security_group_id = lookup(each.value, "referenced_security_group_id", null)
 }
 
@@ -28,5 +28,5 @@ resource "aws_vpc_security_group_egress_rule" "this" {
   from_port         = each.value.from_port
   to_port           = each.value.to_port
   ip_protocol       = each.value.protocol
-  cidr_ipv4         = each.value.cidr_blocks[0]
+  cidr_ipv4         = each.value.cidr_ipv4
 }

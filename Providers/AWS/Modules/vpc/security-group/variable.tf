@@ -15,7 +15,7 @@ variable "ingress_rules" {
     from_port                    = number
     to_port                      = number
     protocol                     = string
-    cidr_ipv4                    = optional(string)
+    cidr_ipv4                    = string
     referenced_security_group_id = optional(string)
   }))
   default = []
@@ -32,10 +32,10 @@ variable "egress_rules" {
   }))
   default = [
     {
-      from_port   = 0
-      to_port     = 0
-      protocol    = "-1"
-      cidr_blocks = ["0.0.0.0/0"]
+      from_port = 0
+      to_port   = 0
+      protocol  = "-1"
+      cidr_ipv4 = "0.0.0.0/0"
     }
   ]
 }
