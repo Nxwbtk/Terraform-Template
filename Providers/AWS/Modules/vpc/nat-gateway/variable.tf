@@ -5,7 +5,8 @@ variable "subnet_id" {
 }
 
 variable "tags" {
-  type = map(string)
+  type    = map(string)
+  default = {}
 }
 
 variable "eip_id" {
