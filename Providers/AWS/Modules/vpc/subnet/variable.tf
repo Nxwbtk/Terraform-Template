@@ -17,3 +17,9 @@ variable "subnet_az" {
   description = "The availability zone of the subnet"
   type        = string
 }
+
+variable "tags" {
+  description = "A map of tags to assign to the resource."
+  type        = map(string)
+  default     = {}
+}

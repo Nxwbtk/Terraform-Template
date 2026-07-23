@@ -1,4 +1,4 @@
-resource "aws_eip" "this" {
+resource "aws_eip" "main" {
   domain = "vpc"
   tags   = var.tags
 }

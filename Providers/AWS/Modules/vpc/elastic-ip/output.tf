@@ -1,8 +1,9 @@
 output "eip_id" {
-  value = aws_eip.this.id
+  description = "The ID of the Elastic IP"
+  value       = aws_eip.main.id
 }
 
 output "eip_public_ip" {
-  value = aws_eip.this.public_ip
-
+  description = "The public IP address of the Elastic IP"
+  value       = aws_eip.main.public_ip
 }

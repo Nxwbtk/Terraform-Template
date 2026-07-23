@@ -1,9 +1,6 @@
-data "aws_region" "current" {}
-
-
 resource "aws_ec2_transit_gateway" "main" {
   description = "Central Transit Gateway"
-  tags = {
+  tags = merge(var.tags, {
     Name = var.tgw_name
-  }
+  })
 }

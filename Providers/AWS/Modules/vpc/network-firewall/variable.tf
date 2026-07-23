@@ -107,3 +107,9 @@ variable "stateless_rule_group_priority" {
   default     = 100
   description = "Priority of the stateless rule group reference in the firewall policy"
 }
+
+variable "tags" {
+  description = "A map of tags to assign to the resource."
+  type        = map(string)
+  default     = {}
+}

@@ -17,3 +17,9 @@ variable "subnet_ids" {
   description = "The IDs of the subnets to use with TGW Attachment"
   type        = list(string)
 }
+
+variable "tags" {
+  description = "A map of tags to assign to the resource."
+  type        = map(string)
+  default     = {}
+}

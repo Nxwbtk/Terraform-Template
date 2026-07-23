@@ -1,6 +1,6 @@
 resource "aws_ec2_transit_gateway_route_table" "main" {
   transit_gateway_id = var.tgw_id
-  tags = {
+  tags = merge(var.tags, {
     "Name" = var.tgw_route_table_name
-  }
+  })
 }

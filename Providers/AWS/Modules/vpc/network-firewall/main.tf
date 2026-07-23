@@ -3,6 +3,7 @@ resource "aws_networkfirewall_rule_group" "stateful" {
   name     = "${var.firewall_name}-stateful"
   capacity = var.stateful_capacity
   type     = "STATEFUL"
+  tags     = merge(var.tags, { Name = "${var.firewall_name}-stateful" })
 
   rule_group {
     rules_source {
@@ -16,6 +17,7 @@ resource "aws_networkfirewall_rule_group" "stateless" {
   name     = "${var.firewall_name}-stateless"
   capacity = var.stateless_capacity
   type     = "STATELESS"
+  tags     = merge(var.tags, { Name = "${var.firewall_name}-stateless" })
 
   rule_group {
     rules_source {
@@ -71,6 +73,7 @@ resource "aws_networkfirewall_rule_group" "stateless" {
 
 resource "aws_networkfirewall_firewall_policy" "inspection" {
   name = var.firewall_policy_name
+  tags = merge(var.tags, { Name = var.firewall_policy_name })
 
   firewall_policy {
     dynamic "stateful_rule_group_reference" {
@@ -97,6 +100,7 @@ resource "aws_networkfirewall_firewall" "inspection" {
   name                = var.firewall_name
   firewall_policy_arn = aws_networkfirewall_firewall_policy.inspection.arn
   vpc_id              = var.vpc_id
+  tags                = merge(var.tags, { Name = var.firewall_name })
 
   dynamic "subnet_mapping" {
     for_each = var.firewall_subnet_ids
