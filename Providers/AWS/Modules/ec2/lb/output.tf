@@ -10,3 +10,13 @@ output "allowed_cidr_ipv4" {
   description = "CIDR to allow traffic from NLB (null for ALB)"
   value       = var.lb_type == "network" ? var.vpc_cidr : null
 }
+
+output "lb_arn" {
+  description = "The ARN of the load balancer"
+  value       = aws_lb.this.arn
+}
+
+output "lb_dns_name" {
+  description = "The DNS name of the load balancer"
+  value       = aws_lb.this.dns_name
+}
