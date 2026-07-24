@@ -15,6 +15,12 @@ variable "default_route_table_propagation" {
   default     = "disable"
 }
 
+variable "auto_accept_shared_attachments" {
+  description = "Whether to auto-accept cross-account TGW attachment requests. Use 'enable' for Hub-Spoke with RAM sharing."
+  type        = string
+  default     = "disable"
+}
+
 variable "tags" {
   description = "A map of tags to assign to the resource."
   type        = map(string)
