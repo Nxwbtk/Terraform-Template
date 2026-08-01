@@ -27,9 +27,10 @@ resource "aws_vpn_connection" "main" {
   }
 }
 
-# Static routes (only when static_routes_only = true)
+# Static routes (only for VGW-based VPN, NOT TGW-based)
+# When using TGW, static routes must be added via TGW Route Tables instead
 resource "aws_vpn_connection_route" "main" {
-  for_each = var.static_routes_only ? toset(var.static_routes) : toset([])
+  for_each = var.transit_gateway_id == null && var.static_routes_only ? toset(var.static_routes) : toset([])
 
   vpn_connection_id      = aws_vpn_connection.main.id
   destination_cidr_block = each.value
