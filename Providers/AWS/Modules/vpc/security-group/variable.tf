@@ -3,6 +3,12 @@ variable "name" {
   description = "Security group name"
 }
 
+variable "description" {
+  type        = string
+  description = "Security group description"
+  default     = ""
+}
+
 variable "vpc_id" {
   type        = string
   description = "VPC ID"
@@ -15,7 +21,7 @@ variable "ingress_rules" {
     from_port                    = number
     to_port                      = number
     protocol                     = string
-    cidr_ipv4                    = string
+    cidr_ipv4                    = optional(string)
     referenced_security_group_id = optional(string)
   }))
   default = []
@@ -24,11 +30,12 @@ variable "ingress_rules" {
 variable "egress_rules" {
   description = "List of egress rules"
   type = list(object({
-    description = optional(string)
-    from_port   = number
-    to_port     = number
-    protocol    = string
-    cidr_ipv4   = string
+    description                  = optional(string)
+    from_port                    = number
+    to_port                      = number
+    protocol                     = string
+    cidr_ipv4                    = optional(string)
+    referenced_security_group_id = optional(string)
   }))
   default = [
     {

@@ -20,6 +20,6 @@ resource "aws_lb_target_group_attachment" "main" {
   for_each          = toset(var.target_ips)
   target_group_arn  = aws_lb_target_group.main.arn
   target_id         = each.key
-  port              = var.port
+  port              = var.target_port != null ? var.target_port : var.port
   availability_zone = var.target_type == "ip" ? "all" : null
 }

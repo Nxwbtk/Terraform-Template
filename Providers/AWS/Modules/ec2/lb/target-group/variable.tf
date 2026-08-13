@@ -9,6 +9,12 @@ variable "port" {
   default     = 80
 }
 
+variable "target_port" {
+  description = "Port for the target attachments (if different from target group port)"
+  type        = number
+  default     = null
+}
+
 variable "protocol" {
   description = "Protocol for the target group"
   type        = string
